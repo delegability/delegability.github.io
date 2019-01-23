@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>AI Task Delegability - Plots</title>
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- jquery & popper for bootstrap, may remove if not needed -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- d3 -->
+
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <!-- <script src="https://d3js.org/d3.v3.min.js"></script> -->
+    <script src="https://d3js.org/d3-color.v1.min.js"></script>
+    <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="js/dataview.js"></script>
+    <script src="js/plots.js"></script>
+    <script src="js/search.js"></script>
+  </head>
+  <body>
+    <div id="tooltip"><p>Tooltip</p></div>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">AI Task Delegability</a>
+      <div class="collapse navbar-collapse">
+        <div class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <a class="nav-item nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link" href="table.html">Data</a>
+          <a class="nav-item nav-link active" href="#">Visualization</a>
+          <a class="nav-item nav-link" href="survey.html">Contribute</a>
+        </div>
+        <form class="form-inline my-2 my-lg-0">
+          <input id="searchInput" class="form-control mr-sm-2" type="search" placeholder="Search">
+          <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+
+
+    <div class="container-fluid">
+      <!-- <div class="container" style="width:900px"> -->
+      <div class="row">
+
+        <nav class="col-md-2 bg-light sidebar" id="plotMenu">
+          <div class="sidebar-sticky">
+            <!-- dropdown anchor -->
+            <div class="dropdown d-none" id="dropdownContainer" style="position:absolute;top:0px;left:20;">
+              <span class="caret dropdown-toggle" data-toggle="dropdown" data-offset="-1000" ></span>
+              <ul class="dropdown-menu dropdown-menu-right" id="dropdownSearchList" >
+              </ul>
+            </div>
+
+
+            <h4>Display Options</h4>
+            <ul class="nav flex-column">
+
+              <p style="font-weight:800;margin-top:0.5em;margin-bottom:0em;">Choose Dataset</p>
+              <li class="nav-item" id="datasetMenu">
+                <div class="dropdown" style="float:left;">
+                  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Expert
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" id="loadDataExpert" href="#">Expert</a>
+                    <a class="dropdown-item" id="loadDataPerson" href="#">Personal</a>
+                  </div>
+                </div>
+              </li>
+
+              <!-- <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li> -->
+              <p style="font-weight:800;margin-top:0.5em;margin-bottom:0em;">Choose Axes</p>
+              <li class="nav-item">
+                <div class="dropdown" style="float:left;">
+                  <button class="btn btn-primary dropdown-toggle" type="button" id="axisButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Choose Axis 1
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="axisButton1" id="axisMenu1">
+                    <!-- <a class="dropdown-item" id="loadDataExpert" href="#">Expert</a> -->
+                  </div>
+                </div>
+              </li>
+              <li class="nav-item">
+                <div class="dropdown" style="float:left;">
+                  <button class="btn btn-primary dropdown-toggle" type="button" id="axisButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Choose Axis 2
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="axisButton2" id="axisMenu2">
+                    <!-- <a class="dropdown-item" id="loadDataExpert" href="#">Expert</a> -->
+                  </div>
+                </div>
+              </li>
+              <li class="nav-item">
+                <div class="dropdown" style="float:left;">
+                  <button class="btn btn-primary dropdown-toggle" type="button" id="axisButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Choose Axis 3
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="axisButton3" id="axisMenu3">
+                    <!-- <a class="dropdown-item" id="loadDataExpert" href="#">Expert</a> -->
+                  </div>
+                </div>
+              </li>
+
+              <p style="font-weight:800;margin-top:0.5em;margin-bottom:0em;">Display Toggles</p>
+              <li class="nav-item">
+                <div class="btn-group-toggle" data-toggle="buttons">
+                  <label class="btn btn-secondary active" id="jitterCheckBtn">
+                    <input type="checkbox" id="jitterCheck" autocomplete="off" checked>Add jitter
+                  </label>
+                </div>
+              </li>
+              <li class="nav-item">
+                <div class="btn-group-toggle" data-toggle="buttons">
+                  <label class="btn btn-secondary active" id="flattenCheckBtn">
+                    <input type="checkbox" id="flattenCheck" autocomplete="off" checked>Average responses<br /> by task
+                  </label>
+                </div>
+              </li>
+              <li class="nav-item">
+                <button type="button" class="btn btn-secondary" id="clearSelButton">Clear Selected</button>
+              </li>
+
+
+            </ul>
+          </div>
+        </nav>
+
+
+        <div class="col-md-9">
+
+          <h1>Plots</h1>
+
+          <p>Choose up to 3 components or factors to compare against one-another. Points are colored according to their delegability to AI. Mouse over a point to see the task it represents.</p>
+
+          <div id="plotContainer">
+          </div>
+        </div>
+
+      </div>
+    </div> <!-- div container -->
+  </body>
+
+</html>

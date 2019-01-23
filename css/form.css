@@ -1,0 +1,89 @@
+.card {
+  margin-top:3px;
+}
+.task{
+  font-size:1.5em;
+  font-weight:bold;
+  color:#922b21;
+}
+.qinside{
+  margin:1em;
+}
+
+.collapse{
+  display: block;
+  text-decoration: none;
+}
+#submitButton{
+  white-space: normal;
+}
+h1.likert-header {
+  padding-left:4.25%;
+  margin:20px 0 0;
+}
+.statement {
+  display:block;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 0.5em 0 0 0;
+}
+.likert {
+  list-style:none;
+  width:100%;
+  margin:0;
+  padding:0em 0em 1em 0em;
+  display:block;
+  border-bottom:2px solid #efefef;
+}
+.likert:last-of-type {border-bottom:0;}
+.likert:before {
+  content: '';
+  position:relative;
+  top:11px;
+  left:9.5%;
+  display:block;
+  background-color:#efefef;
+  height:4px;
+  width:78%;
+}
+.likert li {
+  display:inline-block;
+  width:19%;
+  text-align:center;
+  vertical-align: top;
+}
+.likert li input[type=radio] {
+  display:block;
+  position:relative;
+  top:0px;
+  left:50%;
+  margin-left:-6px;
+}
+.likert li label {
+  width:100%;
+  font-weight:normal;
+  position:relative;
+  top:3px;
+}
+.likert li .custom-control-label {
+  width:100%;
+  font-weight:normal;
+}
+#errorMsg, #successMsg, #serverErrorMsg {
+  font-weight:600;
+  margin-bottom:1em;
+  margin-left:5em;
+  margin-right:5em;
+}
+#successMsg {
+  border:2px solid green;
+}
+#successMsg a {
+  color:white;
+  font-weight:200;
+  text-decoration:underline;
+}
+
+.question_body {
+  padding-left:10px;
+}

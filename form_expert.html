@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Expert AI Task Delegability Survey</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/form.css" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="js/load_task.js"></script>
+    <script src="js/form.js"></script>
+</head>
+
+  <body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">AI Task Delegability</a>
+      <div class="collapse navbar-collapse">
+        <div class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <a class="nav-item nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link" href="table.html">Data</a>
+          <a class="nav-item nav-link" href="plots.html">Visualization</a>
+          <a class="nav-item nav-link active" href="#">Contribute</a>
+        </div>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search">
+          <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+
+    <!-- <div class="container" style="width:900px"> -->
+
+<div class="container" id="Survey">
+
+<!-- Consent -->
+<div class="row justify-content-md-center">
+<div class="col-10">
+<div class="card bg-primary">
+<a class="card-header text-white collapse" href="javascript:void(0);" id="collapseTrigger0"><strong>Informed Consent</strong> <span class="collapse-text">(Click to expand)</span> </a>
+<div class="card-body bg-light" id="consentBody">
+<h3>Informed Consent to Participate in Research</h3>
+<h4>Study Title: AI Task Delegation</h4>
+
+<div class="qinside">
+<p><b>Purpose of research study:</b><br />
+Humans and machines offer complementary abilities. Some tasks are suitable for automation (machine control), some should arguably not be automated (human control), and some are best addressed by a mix of the two. The study is intended to gather data on how people think about different tasks and how they might feel about delegating control of those tasks to an artificial intelligence agent (as opposed to doing the task themselves or entrusting it to a human agent). We aim to explore how to best approach automation in a way that puts people first, by identifying which tasks should be automated, which shouldn’t, and why.</p>
+
+<p><b>Task Description:</b><br />
+This task consists of a short survey on a single randomly-selected task. You will be asked to provide some demographic information, then asked to evaluate your thoughts on the given task by stating the extent to which you agree with 11 statements. Finally, you will be asked to decide how much control of the task you would delegate to a computer/artificial intelligence agent (versus keeping control or delegating to a human agent). The survey is expected to take 5 minutes.</p>
+
+<p><b>Compensation: </b><br />
+You will receive 80 cents for a completed survey response, which is expected to take approximately 5 minutes. At this time, you may only complete one HIT of this type.</p>
+
+<p><b>Benefits: </b><br />
+There is little direct benefit to participating in this study except that you may learn new tasks that AI could be doing. </p>
+
+<p><b>Risks: </b><br />
+There is little risk in participating in this study. You may see some tasks that you do not know that AI could be doing.</p>
+
+<p><b>Voluntary participation: </b><br />
+You may stop participating at any time without penalty by closing your browser window.</p>
+
+<p><b>Data Management and Confidentiality: </b><br />
+The only identifying information kept about you will be your unique worker ID serial number for the purposes of compensation. Survey responses and worker IDs will be collected on Amazon cloud servers. Data will then be anonymized by removing the worker IDs and stored on secure CU-Boulder servers for analysis by the research team. The anonymized data may be shared with other researchers upon publication of the research.</p>
+
+<p><b>Contact Information: </b><br />
+For questions about the research, complaints, or problems: Contact Brian Lubars at brian.lubars@colorado.edu.</p>
+
+<p>This research has been reviewed and approved by an Institutional Review Board (IRB). <b>For questions about your rights as a research participant, complaints, or problems</b>, you may contact them at (303) 735-3702 or irbadmin@colorado.edu.</p>
+
+<p><b>Agreement to Participate</b><br />
+If you would like to participate in this research study, please click the button below to begin the survey. By clicking on the "Accept HIT" button, you indicate that you understand the information in this consent form and that you are giving consent to participate in this research study. You have not waived any legal rights you otherwise would have as a participant in a research study. Remember, your participation is completely voluntary, and you’re free to withdraw at any time.</p>
+</div>
+
+<div class="text-center">
+  <a class="btn btn-primary" href="javascript:void(0);" role="button" id="finishConsent">Continue</a>
+</div>
+
+</div></div></div></div>
+<!-- End Consent-->
+
+<!-- Instructions -->
+<div class="row justify-content-md-center">
+<div class="col-10">
+<div class="card ">
+<!-- WARNING: the ids "collapseTrigger" and "instructionBody" are being used to enable expand/collapse feature -->
+<a class="card-header text-dark collapse" href="javascript:void(0);" id="collapseTrigger1"><strong>Survey Instructions</strong> <span class="collapse-text">(Click to expand)</span> </a>
+<div class="card-body" id="instructionBody">
+
+<p><b>Note: You may only complete ONE HIT. Please do not queue hits or you will slow down study completion and delay payment.</b></p>
+
+<p>We are conducting an academic survey about people’s attitudes towards “delegating” different kinds of tasks to an AI (artificial intelligence) versus to a person. You will:</p>
+
+<ul>
+<li> Provide basic demographic information
+<li> Offer your opinion on properties of a task (e.g., mowing a lawn) in the form of agree/disagree statements
+<li> Choose the best way to divide control of the task between an AI and a person
+</ul>
+
+<p>We expect the survey to take approximately 5-10 minutes, and you will be compensated $0.80 upon submission (Expect approval within 1-2 days; Please note, your submission may not be approved if the attention questions are not answered correctly).</p>
+
+<!-- continue to next section (Expand) -->
+<div class="text-center">
+  <a class="btn btn-primary" href="javascript:void(0);" role="button" id="finishInstructions">Continue</a>
+</div>
+
+</div></div></div></div>
+<!-- End Instructions -->
+
+<!-- Survey Layout -->
+
+<div class="row justify-content-md-center" id="workContent">
+<div class="col-10">
+
+<form id="input-form" action="" method="POST" target="no-target">
+
+<input type="hidden" name="survey_version" value="Expert">
+
+<div class="card ">
+  <a class="card-header text-dark collapse" href="javascript:void(0);" id="collapseTrigger2"><strong>Demographics</strong> <span class="collapse-text">(Click to expand)</span></a>
+<div class="card-body" id="demoBody">
+The following questions will help us to understand the study population and representativeness.
+
+<!-- GENDER -->
+<div class="card "><div class="card-body">
+<h5>1. What best describes your gender?</h5>
+<div class="question_body">
+<div class="custom-control custom-radio">
+  <input class="custom-control-input" name="gender" type="radio" value="Male" id="gender1" required />
+  <label class="custom-control-label" for="gender1">Male</label>
+</div>
+<div class="custom-control custom-radio">
+  <input class="custom-control-input" name="gender" type="radio" value="Female" id="gender2" required />
+  <label class="custom-control-label" for="gender2">Female</label>
+</div>
+<div class="custom-control custom-radio">
+  <input class="custom-control-input" name="gender" type="radio" value="Other" id="gender3" required />
+  <label class="custom-control-label" for="gender3">Prefer to self-describe</label>
+  <input type="text" name="gender-input">
+</div>
+<div class="custom-control custom-radio">
+  <input class="custom-control-input" name="gender" type="radio" id="gender4" value="Prefer not to say" required />
+  <label class="custom-control-label" for="gender4">Prefer not to say</label>
+</div>
+</div></div></div>
+
+<!-- AGE -->
+<div class="card "><div class="card-body">
+<h5>2. What is your age?</h5>
+<div class="question_body">
+<div class="custom-control custom-radio">
+  <input class="custom-control-input" name="age" type="radio" value="18-25" id="age1" required />
+  <label class="custom-control-label" for="age1">18-25</label>
+</div>
+<div class="custom-control custom-radio">
+  <input class="custom-control-input" name="age" type="radio" value="26-35" id="age2" required />
+  <label class="custom-control-label" for="age2">26-35</label>
+</div>
+<div class="custom-control custom-radio">
+  <input class="custom-control-input" name="age" type="radio" value="36-45" id="age3" required />
+  <label class="custom-control-label" for="age3">36-45</label>
+</div>
+<div class="custom-control custom-radio">
+  <input class="custom-control-input" name="age" type="radio" value="46-55" id="age4" required />
+  <label class="custom-control-label" for="age4">46-55</label>
+</div>
+<div class="custom-control custom-radio">
+  <input class="custom-control-input" name="age" type="radio" value="56-65" id="age5" required />
+  <label class="custom-control-label" for="age5">56-65</label>
+</div>
+<div class="custom-control custom-radio">
+  <input class="custom-control-input" name="age" type="radio" value="66-75" id="age6" required />
+  <label class="custom-control-label" for="age6">66-75</label>
+</div>
+<div class="custom-control custom-radio">
+  <input class="custom-control-input" name="age" type="radio" value="76 or older" id="age7" required />
+  <label class="custom-control-label" for="age7">76 or older</label>
+</div>
+<div class="custom-control custom-radio">
+  <input class="custom-control-input" name="age" type="radio" value="Prefer not to say" id="age8" required />
+  <label class="custom-control-label" for="age8">Prefer not to say</label>
+</div>
+</div>
+</div></div>
+
+<div class="card "><div class="card-body">
+<h5>3. How would you rate your level of computer proficiency?</h5>
+<div class="question_body">
+<div class="custom-control custom-radio">
+<input class="custom-control-input" name="tech-level" type="radio" value="5" id="tech-level1" required />
+<label class="custom-control-label" for="tech-level1">Far above average</label>
+</div>
+<div class="custom-control custom-radio">
+<input class="custom-control-input" name="tech-level" type="radio" value="4" id="tech-level2" required />
+<label class="custom-control-label" for="tech-level2">Slightly above average</label>
+</div>
+<div class="custom-control custom-radio">
+<input class="custom-control-input" name="tech-level" type="radio" value="3" id="tech-level3" required />
+<label class="custom-control-label" for="tech-level3">Average</label>
+</div>
+<div class="custom-control custom-radio">
+<input class="custom-control-input" name="tech-level" type="radio" value="2" id="tech-level4" required />
+<label class="custom-control-label" for="tech-level4">Slightly below average</label>
+</div>
+<div class="custom-control custom-radio">
+<input class="custom-control-input" name="tech-level" type="radio" value="1" id="tech-level5" required />
+<label class="custom-control-label" for="tech-level5">Far below average</label>
+</div>
+<div class="custom-control custom-radio">
+<input class="custom-control-input" name="tech-level" type="radio" value="Prefer not to say" id="tech-level6" required />
+<label class="custom-control-label" for="tech-level6">Prefer not to say</label>
+</div>
+</div>
+</div></div>
+
+<div class="card "><div class="card-body">
+<h5>4. What is the highest degree or level of school you have completed? (If currently enrolled, highest degree received)</h5>
+<div class="question_body">
+<div class="custom-control custom-radio">
+<input class="custom-control-input" name="edu-level" type="radio" value="1" id="edu-level1" required />
+<label class="custom-control-label" for="edu-level1">Some high school, no diploma, and below</label>
+</div>
+<div class="custom-control custom-radio">
+<input class="custom-control-input" name="edu-level" type="radio" value="2" id="edu-level2" required />
+<label class="custom-control-label" for="edu-level2">High school graduate, diploma or equivalent (for example: GED)</label>
+  </div>
+<div class="custom-control custom-radio">
+<input class="custom-control-input" name="edu-level" type="radio" value="3" id="edu-level3" required />
+<label class="custom-control-label" for="edu-level3">Some college credit, no degree</label>
+</div>
+<div class="custom-control custom-radio">
+<input class="custom-control-input" name="edu-level" type="radio" value="4" id="edu-level4" required />
+<label class="custom-control-label" for="edu-level4">Trade/technical/vocational training</label>
+</div>
+<div class="custom-control custom-radio">
+<input class="custom-control-input" name="edu-level" type="radio" value="5" id="edu-level5" required />
+<label class="custom-control-label" for="edu-level5">Bachelor's degree, and above</label>
+</div>
+<div class="custom-control custom-radio">
+<input class="custom-control-input" name="edu-level" type="radio" value="Prefer not to say" id="edu-level6" required />
+<label class="custom-control-label" for="edu-level6">Prefer not to say</label>
+</div>
+</div>
+</div></div>
+
+<!-- continue to next section (Expand) -->
+<br />
+<div class="text-center">
+  <a class="btn btn-primary" href="javascript:void(0);" role="button" id="finishDemo">Continue</a>
+</div>
+
+</div> <!-- card primary -->
+</div> <!-- card body -->
+
+<div class="card ">
+<a class="card-header text-dark collapse" href="javascript:void(0);" id="collapseTrigger3"><strong>AI Task Study</strong> <span class="collapse-text">(Click to expand)</span></a>
+<div class="card-body" id="studyBody">
+<p>The following questions are the primary focus of this study. </p>
+
+<p><u><b>Important:</b></u> We will display a task. When answering the following questions, <b>please carefully consider the task and your beliefs about an <span style="color:blue">AI (artificial intelligence) agent</span> performing the task, versus <span style="color:blue">a qualified human person</span> performing the task</b>.
+
+<p><span style="color:#222">(What is an AI agent? You can think of it as a computer, machine, robot, or some other form of automation.)</span><p>
+<!-- <p style="font-size:1.2em;"><b>Here is the task: </b><br /></p> -->
+
+<input type="hidden" name="task" value="Test Task" required />
+
+<div class="card bg-secondary text-white" style="padding-bottom:1px;margin-bottom:8px;">
+  <div class="card-header"><b>Here is the task:</b></div>
+  <div class="card-body bg-light">
+    <span class="task" id="taskDisplay">(you should see a random task here)</span>
+  </div>
+</div>
+
+<div class="card">
+<div class="card-header text-dark">
+<p><b>5. For each of the following statements, please indicate the extent to which you agree or disagree for the above task:</b></p>
+</div>
+<div class="card-body">
+
+<!-- 1. task creativity -->
+<label class="statement">This task requires social skills to complete.</label>
+<ul class="likert">
+  <li>
+    <label><input name="l-social-skills" type="radio" value="5" required />Strongly agree</label>
+  </li>
+	<li><label><input name="l-social-skills" type="radio" value="4" required />Agree</label></li>
+	<li><label><input name="l-social-skills" type="radio" value="3" required />Neutral</label></li>
+	<li><label><input name="l-social-skills" type="radio" value="2" required />Disagree</label></li>
+	<li><label><input name="l-social-skills" type="radio" value="1" required />Strongly disagree</label></li>
+</ul>
+
+<!-- 2. task creativity -->
+<label class="statement">This task requires creativity to complete.</label>
+<ul class="likert">
+	<li><label><input name="l-creativity" type="radio" value="5" required />Strongly agree</label></li>
+	<li><label><input name="l-creativity" type="radio" value="4" required />Agree</label></li>
+	<li><label><input name="l-creativity" type="radio" value="3" required />Neutral</label></li>
+	<li><label><input name="l-creativity" type="radio" value="2" required />Disagree</label></li>
+	<li><label><input name="l-creativity" type="radio" value="1" required />Strongly disagree</label></li>
+</ul>
+
+<!-- 3. time/effort -->
+<label class="statement">This task requires a great deal of time or effort to complete.</label>
+<ul class="likert">
+	<li><label><input name="l-effort" type="radio" value="5" required />Strongly agree</label></li>
+	<li><label><input name="l-effort" type="radio" value="4" required />Agree</label></li>
+	<li><label><input name="l-effort" type="radio" value="3" required />Neutral</label></li>
+	<li><label><input name="l-effort" type="radio" value="2" required />Disagree</label></li>
+	<li><label><input name="l-effort" type="radio" value="1" required />Strongly disagree</label></li>
+</ul>
+
+<!-- 4. attention -->
+<label class="statement">Attention check, please choose 'Strongly Agree' for this one.</label>
+<ul class="likert">
+	<li><label><input name="sanity-check1" type="radio" value="5" required />Strongly agree</label></li>
+	<li><label><input name="sanity-check1" type="radio" value="4" required />Agree</label></li>
+	<li><label><input name="sanity-check1" type="radio" value="3" required />Neutral</label></li>
+	<li><label><input name="sanity-check1" type="radio" value="2" required />Disagree</label></li>
+	<li><label><input name="sanity-check1" type="radio" value="1" required />Strongly disagree</label></li>
+</ul>
+
+<!-- 5. expertise -->
+<label class="statement">It takes significant training or expertise to be qualified for this task.</label>
+<ul class="likert">
+	<li><label><input name="l-expertise" type="radio" value="5" required />Strongly agree</label></li>
+	<li><label><input name="l-expertise" type="radio" value="4" required />Agree</label></li>
+	<li><label><input name="l-expertise" type="radio" value="3" required />Neutral</label></li>
+	<li><label><input name="l-expertise" type="radio" value="2" required />Disagree</label></li>
+	<li><label><input name="l-expertise" type="radio" value="1" required />Strongly disagree</label></li>
+</ul>
+
+<!-- 6. self-confidence -->
+<label class="statement">I am confident in a qualified person's ability to complete this task.</label>
+<ul class="likert">
+	<li><label><input name="l-abilities" type="radio" value="5" required />Strongly agree</label></li>
+	<li><label><input name="l-abilities" type="radio" value="4" required />Agree</label></li>
+	<li><label><input name="l-abilities" type="radio" value="3" required />Neutral</label></li>
+	<li><label><input name="l-abilities" type="radio" value="2" required />Disagree</label></li>
+	<li><label><input name="l-abilities" type="radio" value="1" required />Strongly disagree</label></li>
+</ul>
+
+<!-- 7. accountability -->
+<label class="statement">In the case of mistakes or failure on this task, someone needs to be held accountable.</label>
+<ul class="likert">
+	<li><label><input name="l-accountable" type="radio" value="5" required />Strongly agree</label></li>
+	<li><label><input name="l-accountable" type="radio" value="4" required />Agree</label></li>
+	<li><label><input name="l-accountable" type="radio" value="3" required />Neutral</label></li>
+	<li><label><input name="l-accountable" type="radio" value="2" required />Disagree</label></li>
+	<li><label><input name="l-accountable" type="radio" value="1" required />Strongly disagree</label></li>
+</ul>
+
+<!-- 8. uncertainty -->
+<label class="statement">A complex or unpredictable environment/situation is likely to cause this task to fail.</label>
+<ul class="likert">
+	<li><label><input name="l-uncertainty" type="radio" value="5" required />Strongly agree</label></li>
+	<li><label><input name="l-uncertainty" type="radio" value="4" required />Agree</label></li>
+	<li><label><input name="l-uncertainty" type="radio" value="3" required />Neutral</label></li>
+	<li><label><input name="l-uncertainty" type="radio" value="2" required />Disagree</label></li>
+	<li><label><input name="l-uncertainty" type="radio" value="1" required />Strongly disagree</label></li>
+</ul>
+
+<!-- 9. scope of impact -->
+<label class="statement">Failure would result in a substantial negative impact on my life or the lives of others.</label>
+<ul class="likert">
+	<li><label><input name="l-impact" type="radio" value="5" required />Strongly agree</label></li>
+	<li><label><input name="l-impact" type="radio" value="4" required />Agree</label></li>
+	<li><label><input name="l-impact" type="radio" value="3" required />Neutral</label></li>
+	<li><label><input name="l-impact" type="radio" value="2" required />Disagree</label></li>
+	<li><label><input name="l-impact" type="radio" value="1" required />Strongly disagree</label></li>
+</ul>
+
+<!-- 13. attention -->
+<label class="statement">Attention check, please choose 'Strongly Disagree' for this one.</label>
+<ul class="likert">
+	<li><label><input name="sanity-check2" type="radio" value="5" required />Strongly agree</label></li>
+	<li><label><input name="sanity-check2" type="radio" value="4" required />Agree<required /label></li>
+	<li><label><input name="sanity-check2" type="radio" value="3" required />Neutral</label></li>
+	<li><label><input name="sanity-check2" type="radio" value="2" required />Disagree</label></li>
+	<li><label><input name="sanity-check2" type="radio" value="1" required />Strongly disagree</label></li>
+</ul>
+
+<!-- 14. trust-ability -->
+<label class="statement">I trust the AI agent's ability to reliably complete the task.</label>
+<ul class="likert">
+	<li><label><input name="l-trust" type="radio" value="5" required />Strongly agree</label></li>
+	<li><label><input name="l-trust" type="radio" value="4" required />Agree</label></li>
+	<li><label><input name="l-trust" type="radio" value="3" required />Neutral</label></li>
+	<li><label><input name="l-trust" type="radio" value="2" required />Disagree</label></li>
+	<li><label><input name="l-trust" type="radio" value="1" required />Strongly disagree</label></li>
+</ul>
+
+<!-- 15. trust-process -->
+<label class="statement">Understanding the reasons behind the AI agent's actions is important for me to trust the AI agent on this task (e.g., explanations are necessary).</label>
+<ul class="likert">
+	<li><label><input name="l-process" type="radio" value="5" required />Strongly agree</label></li>
+	<li><label><input name="l-process" type="radio" value="4" required />Agree</label></li>
+	<li><label><input name="l-process" type="radio" value="3" required />Neutral</label></li>
+	<li><label><input name="l-process" type="radio" value="2" required />Disagree</label></li>
+	<li><label><input name="l-process" type="radio" value="1" required />Strongly disagree</label></li>
+</ul>
+
+<!-- 16. trust-values -->
+<label class="statement">I trust the AI agent's actions to protect my interests and align with my values for this task.</label>
+<ul class="likert">
+	<li><label><input name="l-values" type="radio" value="5" required />Strongly agree</label></li>
+	<li><label><input name="l-values" type="radio" value="4" required />Agree</label></li>
+	<li><label><input name="l-values" type="radio" value="3" required />Neutral</label></li>
+	<li><label><input name="l-values" type="radio" value="2" required />Disagree</label></li>
+	<li><label><input name="l-values" type="radio" value="1" required />Strongly disagree</label></li>
+</ul>
+
+</div>
+</div>
+
+<br />
+
+<div class="card bg-secondary text-white">
+<h5 class="card-header">6. If you were to ask someone to complete the given (above) task, what level of AI/machine assistance would you prefer?</h5>
+<div class="card-body text-dark bg-light">
+<div class="custom-control custom-radio">
+  <input class="custom-control-input" name="label" type="radio" value="Full AI automation" id="label_ai" required />
+  <label for="label_ai" class="custom-control-label">
+    <b>Full AI automation:</b> decisions and actions are made automatically by the AI once the task is assigned; no human involvement.
+  </label>
+</div>
+<div class="custom-control custom-radio">
+<input class="custom-control-input" name="label" type="radio" value="The AI leads and the human assists" id="label2" required />
+<label class="custom-control-label" for="label2"><b>The AI leads and the human assists:</b> the AI performs the task, but asks the person for suggestions/confirmation when appropriate.</label>
+</div>
+<div class="custom-control custom-radio">
+<input class="custom-control-input" name="label" type="radio" value="The human leads and the AI assists" id="label3" required />
+<label class="custom-control-label" for="label3"><b>The human leads and the AI assists:</b> the person does the task mostly on their own, but the AI offers recommendations or help when appropriate (e.g., human gets stuck or AI sees possible mistakes).</label>
+</div>
+<div class="custom-control custom-radio">
+<input class="custom-control-input" name="label" type="radio" value="No AI assistance" id="label4" required />
+<label class="custom-control-label" for="label4"><b>No AI assistance:</b> the person does the task completely on their own.</label>
+</div>
+</div></div>
+
+</div> <!-- collapse card body -->
+</div> <!-- study card -->
+
+  <div id="errorMsg" class="d-none card bg-danger text-center text-white">
+    <div class="card-header">Validation error: Please make sure all questions are answered.</div>
+  </div>
+  <div id="successMsg" class="d-none card bg-success text-center text-white">
+    <div class="card-header">Form submitted. Thank you!</div>
+    <div class="card-body">
+      <p class="card-text">
+      <a class="card-link" href="survey.html">Take another survey</a>
+      <a class="card-link" href="index.html">Return to home</a>
+      </p>
+    </div>
+  </div>
+  <div id="serverErrorMsg" class="d-none card bg-danger text-center text-white">
+    <div class="card-header">Oops, server error, please try again later. Sorry!</div>
+  </div>
+
+  <div class="text-center">
+    <button type="submit" style="margin:1em;" class="btn btn-success btn-lg" id="form-submit" value="submit"><strong>Submit!</strong></button>
+    <br />
+    <br />
+  </div>
+
+</form>
+</div> <!-- col -->
+</div> <!-- work content -->
+<!-- End Survey Layout -->
+
+</div> <!-- container -->
+
+</body>
+</html>
+
+

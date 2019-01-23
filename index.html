@@ -1,10 +1,89 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <title>Test page</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>AI Task Delegability Data</title>
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- jquery & popper for bootstrap, may remove if not needed -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- d3 -->
+    <script src="js/table.js"></script>
   </head>
   <body>
-    <h1>Hello World</h1>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">AI Task Delegability</a>
+      <div class="collapse navbar-collapse">
+        <div class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <a class="nav-item nav-link active" href="#">Home<span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link" href="table.html">Data</a>
+          <a class="nav-item nav-link" href="plots.html">Visualization</a>
+          <a class="nav-item nav-link" href="survey.html">Contribute</a>
+        </div>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search">
+          <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+
+    <div class="container" style="width:900px">
+      <h1>Task Delegability</h1>
+      <h3><small class="text-muted">Deciding which tasks should be delegated to AI: A human-centered approach.</small></h3>
+
+      <p>
+      Recent developments in machine learning have catapulted the promise of artificial intelligence into the public consciousness and driven a resurgence in research.
+      ML, and more broadly, AI, clearly hold great promise for addressing societal ills. 
+      But while machine capabilities have reached new hights, the questions of <i>which tasks to automate</i> and the <i>extent to do so</i> have lagged behind.</p>
+
+      <!--<p>In other words, people are pushing the boundary of <i>what AI can do</i>, but the parallel question of <i>what AI should do</i> remains understudied in artificial intelligence research.</p> -->
+
+      <blockquote class="blockquote" style="margin-left:1em;padding-left:2em;border-left:3px solid #bbb">
+        <p><a href="https://news.stanford.edu/thedish/2017/03/14/andrew-ng-why-ai-is-the-new-electricity/">AI is the new electricity.</a>
+        Just as electricity transformed almost everything 100 years ago, today I actually have a hard time thinking of an industry that I don’t think AI will transform in the next several years.</p>
+        <footer class="blockquote-footer"><cite>Andrew Ng</cite></footer>
+      </blockquote>
+
+
+      <p>We wish to explore these shortcomings.</p>
+
+      <p>
+      For some tasks, such as dangerous or routine work, complete automation may be the right answer. For others, we may still want AI to play an assistive role while maintaining overall human control (e.g, <a href="https://medium.com/@ChenhaoTan/human-centered-machine-learning-a-machine-in-the-loop-approach-ed024db34fe7">machine-in-the-loop designs</a>).
+      Clearly machine ability figures into this decision. But human preferences should also play a role. Even if machines are more capable, people may want to keep control over tasks for a variety of reasons: e.g., privacy, ethics, or motivation. A better understanding of the factors behind a delegation preference, and the relation of the delegability of different tasks to each-other could help researchers and industry alike.
+      </p>
+
+      <p>Towards this end, we take three steps.
+      <ol>
+        <li>Develop a framework of human perception of task delegability to AI, considering four high-level factors which may contribute to a delegation decision</li>
+        <li>
+          Build a dataset of 100 tasks for evaluation under our framework. 
+          These 100 tasks are meant as a starting point towards the eventual goal of spanning the whole delegable "task space".
+        </li>
+
+        <li>Develop and administer a survey to collect peoples' perception of the tasks under our framework, including the extent to which they prefer AI involvement.
+        </li>
+      </ol>
+
+      <h3>Results</h3>
+      <p>We find little preference for full AI control and a strong
+      preference for machine-in-the-loop designs, in which humans
+      play the leading role. Our framework can effectively predict
+      human preferences in the degree of AI assistance. Among the
+      four factors, trust is the most predictive of human preferences
+      of optimal human-machine delegation.</p>
+
+      <h3>Exploring the data</h3>
+      <p>The responses are available on this site in interactive forms for exploration, either as a <a href="table.html">table</a> with the raw data, or visualized as a multidimensional <a href="plots.html">plot</a>.
+
+      <p>We also have the <a href="survey.html">surveys</a> available. You can view the survey we administered to collect the data, or if you like, submit responses of your own!</p>
+
+    </div> <!-- div container -->
   </body>
+
 </html>
