@@ -93,9 +93,6 @@ function main() {
             }
             menu.append(factorSpan);
         }
-
-        /* attach search bar function */
-        $("#searchInput").on('input', handleSearch);
     });
 }
 
@@ -183,7 +180,7 @@ function avgFactorValues(d, factor) {
     for(var i = 0; i < factor.components.length; i++) {
         var comp = tableview.components[factor.components[i]].key
         var value = (d.value) ? d.value[comp] : d[comp];
-        avg += value;
+        avg += +value;
     }
     // calc avg & round to 2 decimal places. js floats are weird.
     avg = avg / factor.components.length;
@@ -211,7 +208,6 @@ function dataToFactorColumn(row, i) {
     return table_row.concat(data_cells);
 }
 
-
 function dataToColumn(row, i) {
     var task = (row.key) ? row.key : row.task;
     var table_row = [
@@ -237,7 +233,7 @@ function dataToColumn(row, i) {
 
 function updateTableTitle(dataset) {
   d3.selectAll('#table-title')
-      .text('AI Task Delegability: ' + dataset.name);
+      .text('Table Display Options (' + dataset.name + ' Dataset)');
 }
 
 function drawFactorTable(data) {
@@ -367,33 +363,6 @@ function toggleSort(i) {
     }
     processData(tableview.data, false);
     drawTable();
-}
-
-function startBounceDatapoint(d, i) {
-  // placeholder. search mouseover
-}
-
-function handleClickData(d, i) {
-  // placeholder. search mouseout
-}
-
-function handleClickData(d, i) {
-  // placeholder. search click
-}
-
-function handleSearch() {
-    var htmlListId = "#dropdownSearchList";
-    var query = $(this).val();
-
-    if(query.length > 2) {
-      $("#dropdownContainer").removeClass("d-none");
-      $(htmlListId).addClass("show");
-      searchTasks(query, tableview.data, htmlListId);
-    } else {
-      $("#dropdownContainer").addClass("d-none");
-      $(htmlListId).removeClass("show");
-      clearSearchList(htmlListId);
-    }
 }
 
 /* run the script! */

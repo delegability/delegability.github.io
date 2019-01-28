@@ -81,9 +81,9 @@ $(document).ready(function() {
   $('#submitButton').click(expandAll);
 
   /* get random task, fill into form */
-  var randomTask = get_random_task();
-  $("#input-form input:hidden[name=task]").val(randomTask);
-  $("#taskDisplay").html(randomTask);
+  var selectedTask = load_task_selection();
+  $("#input-form input:hidden[name=task]").val(selectedTask);
+  $("#taskDisplay").html(selectedTask);
 
   /* set up submit button script */
   $('#input-form').url = 'https://script.google.com/macros/s/AKfycbz-44uDE5N-KdaK0dvF57z3EmnxVR_gVPnOJ-c1pCbBgOHQ6oo/exec'

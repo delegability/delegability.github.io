@@ -2,29 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Personal AI Task Delegability Survey</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="form.css" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/form.css" type="text/css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="load_task.js"></script>
-    <script src="form.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="js/load_task.js"></script>
+    <script src="js/form.js"></script>
 </head>
 
-<body>
+  <body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">AI Task Delegability</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarToggler">
+        <div class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <a class="nav-item nav-link" href="index.html">Home</a>
+          <a class="nav-item nav-link" href="table.html">Data</a>
+          <a class="nav-item nav-link" href="plots.html">Visualization</a>
+          <a class="nav-item nav-link active" href="survey.html">Contribute<span class="sr-only">(current)</span></a>
+        </div>
+      </div>
+    </nav>
+
 <div class="container" id="Survey">
 
 <!-- Consent -->
-<div class="row">
-<div class="col-xs-12 col-md-12">
-<div class="panel panel-primary">
-<a class="panel-heading collapse" href="javascript:void(0);" id="collapseTrigger0"><strong>Informed Consent</strong> <span class="collapse-text">(Click to expand)</span> </a>
-<div class="panel-body" id="consentBody">
-<!-- <div class="panel panel-default qinside"> -->
+<div class="row justify-content-md-center">
+<div class="col-10">
+<div class="card bg-primary">
+<a class="card-header text-white collapse" href="javascript:void(0);" id="collapseTrigger0"><strong>Informed Consent</strong> <span class="collapse-text">(Click to expand)</span> </a>
+<div class="card-body bg-light" id="consentBody">
 <h3>Informed Consent to Participate in Research</h3>
 <h4>Study Title: AI Task Delegation</h4>
 
-<div class="panel qinside">
+<div class="qinside">
 <p><b>Purpose of research study:</b><br />
 Humans and machines offer complementary abilities. Some tasks are suitable for automation (machine control), some should arguably not be automated (human control), and some are best addressed by a mix of the two. The study is intended to gather data on how people think about different tasks and how they might feel about delegating control of those tasks to an artificial intelligence agent (as opposed to doing the task themselves or entrusting it to a human agent). We aim to explore how to best approach automation in a way that puts people first, by identifying which tasks should be automated, which shouldn’t, and why.</p>
 
@@ -63,12 +79,12 @@ If you would like to participate in this research study, please click the button
 <!-- End Consent-->
 
 <!-- Instructions -->
-<div class="row">
-<div class="col-xs-12 col-md-12">
-<div class="panel panel-default">
+<div class="row justify-content-md-center">
+<div class="col-10">
+<div class="card ">
 <!-- WARNING: the ids "collapseTrigger" and "instructionBody" are being used to enable expand/collapse feature -->
-<a class="panel-heading collapse" href="javascript:void(0);" id="collapseTrigger1"><strong>Survey Instructions</strong> <span class="collapse-text">(Click to expand)</span> </a>
-<div class="panel-body" id="instructionBody">
+<a class="card-header text-dark collapse" href="javascript:void(0);" id="collapseTrigger1"><strong>Survey Instructions</strong> <span class="collapse-text">(Click to expand)</span> </a>
+<div class="card-body" id="instructionBody">
 
 <p><b>Note: You may only complete ONE HIT. Please do not queue hits or you will slow down study completion and delay payment.</b></p>
 
@@ -92,96 +108,179 @@ If you would like to participate in this research study, please click the button
 
 <!-- Survey Layout -->
 
-<div class="row" id="workContent">
-<div class="col-xs-10 col-xs-offset-1">
+<div class="row justify-content-md-center" id="workContent">
+<div class="col-10">
 
 <form id="input-form" action="" method="POST" target="no-target">
 
 <input type="hidden" name="survey_version" value="Personal">
 
-<div class="panel panel-primary">
-  <a class="panel-heading collapse" href="javascript:void(0);" id="collapseTrigger2"><strong>Demographics</strong> <span class="collapse-text">(Click to expand)</span></a>
-<div class="panel-body" id="demoBody">
+<div class="card ">
+  <a class="card-header text-dark collapse" href="javascript:void(0);" id="collapseTrigger2"><strong>Demographics</strong> <span class="collapse-text">(Click to expand)</span></a>
+<div class="card-body" id="demoBody">
 The following questions will help us to understand the study population and representativeness.
 
-<!-- <div class="col-sm-10 col-sm-offset-1"> -->
 <!-- GENDER -->
-<div class="panel panel-default qinside"><div class="panel-body">
-<label>1. What best describes your gender? </label>
-<div class="radio"><label><input class="form-check-input" name="gender" type="radio" value="Male" required />Male</label></div>
-<div class="radio"><label><input class="form-check-input" name="gender" type="radio" value="Female" required />Female</label></div>
-<div class="radio"><label><input class="form-check-input" name="gender" type="radio" value="Other" required />Prefer to self-describe:</label>
-<input type="text" name="gender-input">
+<div class="card "><div class="card-body">
+<h5>1. What best describes your gender?</h5>
+<div class="question_body">
+<div class="custom-control custom-radio">
+  <input class="custom-control-input" name="gender" type="radio" value="Male" id="gender1" required />
+  <label class="custom-control-label" for="gender1">Male</label>
 </div>
-<div class="radio"><label><input class="form-check-input" name="gender" type="radio" value="Prefer not to say" required />Prefer not to say </label></div>
-</div></div>
+<div class="custom-control custom-radio">
+  <input class="custom-control-input" name="gender" type="radio" value="Female" id="gender2" required />
+  <label class="custom-control-label" for="gender2">Female</label>
+</div>
+<div class="custom-control custom-radio">
+  <input class="custom-control-input" name="gender" type="radio" value="Other" id="gender3" required />
+  <label class="custom-control-label" for="gender3">Prefer to self-describe</label>
+  <input type="text" name="gender-input">
+</div>
+<div class="custom-control custom-radio">
+  <input class="custom-control-input" name="gender" type="radio" id="gender4" value="Prefer not to say" required />
+  <label class="custom-control-label" for="gender4">Prefer not to say</label>
+</div>
+</div></div></div>
 
 <!-- AGE -->
-<div class="panel panel-default qinside"><div class="panel-body">
-<label>2. What is your age?</label>
-<div class="radio"><label><input name="age" type="radio" value="18-25" required />18-25</label></div>
-<div class="radio"><label><input name="age" type="radio" value="26-35" required />26-35</label></div>
-<div class="radio"><label><input name="age" type="radio" value="36-45" required />36-45</label></div>
-<div class="radio"><label><input name="age" type="radio" value="46-55" required />46-55</label></div>
-<div class="radio"><label><input name="age" type="radio" value="56-65" required />56-65</label></div>
-<div class="radio"><label><input name="age" type="radio" value="66-75" required />66-75</label></div>
-<div class="radio"><label><input name="age" type="radio" value="76 or older" />76 or older</label></div>
-<div class="radio"><label><input name="age" type="radio" value="Prefer not to say" />Prefer not to say</label></div>
+<div class="card "><div class="card-body">
+<h5>2. What is your age?</h5>
+<div class="question_body">
+<div class="custom-control custom-radio">
+  <input class="custom-control-input" name="age" type="radio" value="18-25" id="age1" required />
+  <label class="custom-control-label" for="age1">18-25</label>
+</div>
+<div class="custom-control custom-radio">
+  <input class="custom-control-input" name="age" type="radio" value="26-35" id="age2" required />
+  <label class="custom-control-label" for="age2">26-35</label>
+</div>
+<div class="custom-control custom-radio">
+  <input class="custom-control-input" name="age" type="radio" value="36-45" id="age3" required />
+  <label class="custom-control-label" for="age3">36-45</label>
+</div>
+<div class="custom-control custom-radio">
+  <input class="custom-control-input" name="age" type="radio" value="46-55" id="age4" required />
+  <label class="custom-control-label" for="age4">46-55</label>
+</div>
+<div class="custom-control custom-radio">
+  <input class="custom-control-input" name="age" type="radio" value="56-65" id="age5" required />
+  <label class="custom-control-label" for="age5">56-65</label>
+</div>
+<div class="custom-control custom-radio">
+  <input class="custom-control-input" name="age" type="radio" value="66-75" id="age6" required />
+  <label class="custom-control-label" for="age6">66-75</label>
+</div>
+<div class="custom-control custom-radio">
+  <input class="custom-control-input" name="age" type="radio" value="76 or older" id="age7" required />
+  <label class="custom-control-label" for="age7">76 or older</label>
+</div>
+<div class="custom-control custom-radio">
+  <input class="custom-control-input" name="age" type="radio" value="Prefer not to say" id="age8" required />
+  <label class="custom-control-label" for="age8">Prefer not to say</label>
+</div>
+</div>
 </div></div>
 
-<div class="panel panel-default qinside"><div class="panel-body">
-<label>3. How would you rate your level of computer proficiency? </label>
-<div class="radio"><label><input name="tech-level" type="radio" value="5" required />Far above average</label></div>
-<div class="radio"><label><input name="tech-level" type="radio" value="4" required />Slightly above average</label></div>
-<div class="radio"><label><input name="tech-level" type="radio" value="3" required />Average</label></div>
-<div class="radio"><label><input name="tech-level" type="radio" value="2" required />Slightly below average</label></div>
-<div class="radio"><label><input name="tech-level" type="radio" value="1" required />Far below average</label></div>
-<div class="radio"><label><input name="tech-level" type="radio" value="Prefer not to say" required />Prefer not to say</label></div>
+<div class="card "><div class="card-body">
+<h5>3. How would you rate your level of computer proficiency?</h5>
+<div class="question_body">
+<div class="custom-control custom-radio">
+<input class="custom-control-input" name="tech-level" type="radio" value="5" id="tech-level1" required />
+<label class="custom-control-label" for="tech-level1">Far above average</label>
+</div>
+<div class="custom-control custom-radio">
+<input class="custom-control-input" name="tech-level" type="radio" value="4" id="tech-level2" required />
+<label class="custom-control-label" for="tech-level2">Slightly above average</label>
+</div>
+<div class="custom-control custom-radio">
+<input class="custom-control-input" name="tech-level" type="radio" value="3" id="tech-level3" required />
+<label class="custom-control-label" for="tech-level3">Average</label>
+</div>
+<div class="custom-control custom-radio">
+<input class="custom-control-input" name="tech-level" type="radio" value="2" id="tech-level4" required />
+<label class="custom-control-label" for="tech-level4">Slightly below average</label>
+</div>
+<div class="custom-control custom-radio">
+<input class="custom-control-input" name="tech-level" type="radio" value="1" id="tech-level5" required />
+<label class="custom-control-label" for="tech-level5">Far below average</label>
+</div>
+<div class="custom-control custom-radio">
+<input class="custom-control-input" name="tech-level" type="radio" value="Prefer not to say" id="tech-level6" required />
+<label class="custom-control-label" for="tech-level6">Prefer not to say</label>
+</div>
+</div>
 </div></div>
 
-<div class="panel panel-default qinside"><div class="panel-body">
-<label>4. What is the highest degree or level of school you have completed? (If currently enrolled, highest degree received)</label>
-<div class="radio"><label><input name="edu-level" type="radio" value="1" required />Some high school, no diploma, and below</label></div>
-<div class="radio"><label><input name="edu-level" type="radio" value="2" required />High school graduate, diploma or equivalent (for example: GED)</label></div>
-<div class="radio"><label><input name="edu-level" type="radio" value="3" required />Some college credit, no degree</label></div>
-<div class="radio"><label><input name="edu-level" type="radio" value="4" required />Trade/technical/vocational training</label></div>
-<div class="radio"><label><input name="edu-level" type="radio" value="5" required />Bachelor's degree, and above</label></div>
-<div class="radio"><label><input name="edu-level" type="radio" value="Prefer not to say" />Prefer not to say</label></div>
+<div class="card "><div class="card-body">
+<h5>4. What is the highest degree or level of school you have completed? (If currently enrolled, highest degree received)</h5>
+<div class="question_body">
+<div class="custom-control custom-radio">
+<input class="custom-control-input" name="edu-level" type="radio" value="1" id="edu-level1" required />
+<label class="custom-control-label" for="edu-level1">Some high school, no diploma, and below</label>
+</div>
+<div class="custom-control custom-radio">
+<input class="custom-control-input" name="edu-level" type="radio" value="2" id="edu-level2" required />
+<label class="custom-control-label" for="edu-level2">High school graduate, diploma or equivalent (for example: GED)</label>
+  </div>
+<div class="custom-control custom-radio">
+<input class="custom-control-input" name="edu-level" type="radio" value="3" id="edu-level3" required />
+<label class="custom-control-label" for="edu-level3">Some college credit, no degree</label>
+</div>
+<div class="custom-control custom-radio">
+<input class="custom-control-input" name="edu-level" type="radio" value="4" id="edu-level4" required />
+<label class="custom-control-label" for="edu-level4">Trade/technical/vocational training</label>
+</div>
+<div class="custom-control custom-radio">
+<input class="custom-control-input" name="edu-level" type="radio" value="5" id="edu-level5" required />
+<label class="custom-control-label" for="edu-level5">Bachelor's degree, and above</label>
+</div>
+<div class="custom-control custom-radio">
+<input class="custom-control-input" name="edu-level" type="radio" value="Prefer not to say" id="edu-level6" required />
+<label class="custom-control-label" for="edu-level6">Prefer not to say</label>
+</div>
+</div>
 </div></div>
 
 <!-- continue to next section (Expand) -->
+<br />
 <div class="text-center">
   <a class="btn btn-primary" href="javascript:void(0);" role="button" id="finishDemo">Continue</a>
 </div>
 
-</div> <!-- panel primary -->
-</div> <!-- panel body -->
+</div> <!-- card primary -->
+</div> <!-- card body -->
 
-<div class="panel panel-primary">
-<a class="panel-heading collapse" href="javascript:void(0);" id="collapseTrigger3"><strong>AI Task Study</strong> <span class="collapse-text">(Click to expand)</span></a>
-<div class="panel-body" id="studyBody">
+<div class="card ">
+<a class="card-header text-dark collapse" href="javascript:void(0);" id="collapseTrigger3"><strong>AI Task Study</strong> <span class="collapse-text">(Click to expand)</span></a>
+<div class="card-body" id="studyBody">
 <p>The following questions are the primary focus of this study. </p>
 
 <p><u><b>Important:</b></u> We will display a task. When answering the following questions, <b>please carefully consider the task and your beliefs about an <span style="color:blue">AI (artificial intelligence) agent</span> performing the task, versus <span style="color:blue">you personally</span> performing the task</b>.
 
 <p><span style="color:#222">(What is an AI agent? You can think of it as a computer, machine, robot, or some other form of automation.)</span><p>
-<p style="font-size:1.2em;"><b>Here is the task: </b><br /></p>
 
 <input type="hidden" name="task" value="Test Task" required />
 
-<div class="well well-sm"><span class="task" id="taskDisplay">(you should see a random task here)</span></div>
+<div class="card bg-secondary text-white" style="padding-bottom:1px;margin-bottom:8px;">
+  <div class="card-header"><b>Here is the task:</b></div>
+  <div class="card-body bg-light">
+    <span class="task" id="taskDisplay">(you should see a random task here)</span>
+  </div>
+</div>
 
-
-<div class="panel panel-default qinside">
-<div class="panel-heading">
+<div class="card">
+<div class="card-header text-dark">
 <p><b>5. For each of the following statements, please indicate the extent to which you agree or disagree for the above task:</b></p>
 </div>
-<div class="panel-body">
+<div class="card-body">
 
 <!-- 1. task creativity -->
 <label class="statement">This task requires social skills to complete.</label>
 <ul class="likert">
-	<li><label><input name="l-social-skills" type="radio" value="5" required />Strongly agree</label></li>
+  <li>
+    <label><input name="l-social-skills" type="radio" value="5" required />Strongly agree</label>
+  </li>
 	<li><label><input name="l-social-skills" type="radio" value="4" required />Agree</label></li>
 	<li><label><input name="l-social-skills" type="radio" value="3" required />Neutral</label></li>
 	<li><label><input name="l-social-skills" type="radio" value="2" required />Disagree</label></li>
@@ -343,31 +442,50 @@ The following questions will help us to understand the study population and repr
 
 <br />
 
-<div class="panel panel-danger qinside">
-<div class="panel-heading">
-<label>6. If you were to do the given (above) task, what level of AI/machine assistance would you prefer?</label>
+<div class="card bg-secondary text-white">
+<h5 class="card-header">6. If you were to do the given (above) task, what level of AI/machine assistance would you prefer?</h5>
+<div class="card-body text-dark bg-light">
+<div class="custom-control custom-radio">
+  <input class="custom-control-input" name="label" type="radio" value="Full AI automation" id="label_ai" required />
+  <label for="label_ai" class="custom-control-label">
+    <b>Full AI automation:</b> decisions and actions are made automatically by the AI once the task is assigned; you do nothing.
+  </label>
 </div>
-<div class="panel-body">
-<div class="radio"><label><input name="label" type="radio" value="Full AI automation" required /><b>Full AI automation:</b> decisions and actions are made automatically by the AI once the task is assigned; you do nothing.</label></div>
-<div class="radio"><label><input name="label" type="radio" value="The AI leads and the human assists" required /><b>The AI leads and the human assists:</b> the AI performs the task, but asks you for suggestions/confirmation when appropriate.</label></div>
-<div class="radio"><label><input name="label" type="radio" value="The human leads and the AI assists" required /><b>The human leads and the AI assists:</b> you do the task mostly on your own, but the AI offers recommendations or help when appropriate (e.g., you get stuck or AI sees possible mistakes).</label></div>
-<div class="radio"><label><input name="label" type="radio" value="No AI assistance" required /><b>No AI assistance:</b> you do the task completely on your own.</label></div>
+<div class="custom-control custom-radio">
+<input class="custom-control-input" name="label" type="radio" value="The AI leads and the human assists" id="label2" required />
+<label class="custom-control-label" for="label2"><b>The AI leads and the human assists:</b> the AI performs the task, but asks you for suggestions/confirmation when appropriate.</label>
+</div>
+<div class="custom-control custom-radio">
+<input class="custom-control-input" name="label" type="radio" value="The human leads and the AI assists" id="label3" required />
+<label class="custom-control-label" for="label3"><b>The human leads and the AI assists:</b> you do the task mostly on your own, but the AI offers recommendations or help when appropriate (e.g., you get stuck or AI sees possible mistakes).</label>
+</div>
+<div class="custom-control custom-radio">
+<input class="custom-control-input" name="label" type="radio" value="No AI assistance" id="label4" required />
+<label class="custom-control-label" for="label4"><b>No AI assistance:</b> you do the task completely on your own.</label>
+</div>
 </div></div>
 
-</div> <!-- collapse panel body -->
-</div> <!-- study panel -->
+</div> <!-- collapse card body -->
+</div> <!-- study card -->
 
-  <div id="errorMsg" class="hidden text-center bg-danger"><p>Validation error: Please make sure all questions are answered.</p></div>
-  <div id="successMsg" class="hidden text-center">
-    <p>Form submitted. Thank you!</p>
-    <p><a href="survey.html">Take another survey</a>, or <a href="index.html">Return to site</a>.</p>
+  <div id="errorMsg" class="d-none card bg-danger text-center text-white">
+    <div class="card-header">Validation error: Please make sure all questions are answered.</div>
   </div>
-  <div id="serverErrorMsg" class="hidden text-center bg-danger">
-    <p>Oops, server error, please try again later. Sorry!</p>
+  <div id="successMsg" class="d-none card bg-success text-center text-white">
+    <div class="card-header">Form submitted. Thank you!</div>
+    <div class="card-body">
+      <p class="card-text">
+      <a class="card-link" href="survey.html">Take another survey</a>
+      <a class="card-link" href="index.html">Return to home</a>
+      </p>
+    </div>
+  </div>
+  <div id="serverErrorMsg" class="d-none card bg-danger text-center text-white">
+    <div class="card-header">Oops, server error, please try again later. Sorry!</div>
   </div>
 
   <div class="text-center">
-    <button type="submit" style="margin-bottom:1em;" class="btn btn-success btn-lg" id="form-submit" value="submit" onclick="expandAll();"><strong>Submit!</strong></button>
+    <button type="submit" style="margin:1em;" class="btn btn-success btn-lg" id="form-submit" value="submit"><strong>Submit!</strong></button>
     <br />
     <br />
   </div>
@@ -376,9 +494,8 @@ The following questions will help us to understand the study population and repr
 </div> <!-- col -->
 </div> <!-- work content -->
 <!-- End Survey Layout -->
-</div>
+
+</div> <!-- container -->
 
 </body>
 </html>
-
-

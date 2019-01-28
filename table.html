@@ -26,7 +26,10 @@
   <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
       <a class="navbar-brand" href="#">AI Task Delegability</a>
-      <div class="collapse navbar-collapse">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarToggler">
         <div class="navbar-nav mr-auto mt-2 mt-lg-0">
           <a class="nav-item nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
           <a class="nav-item nav-link active" href="#">Data</a>
@@ -48,14 +51,15 @@
         </ul>
       </div>
 
-      <h2 id="table-title">Loading data...</h2>
+      <h2>Task Delegability Survey Results</h2>
       <p>Here you can explore the raw data we collected from our surveys on the delegability of different tasks to AI. </p>
       <p>Each participant was presented with one of 100 tasks, and evaluated the task under components of our framework. Finally, they selected their preferred level of machine assistance for the task: the delegability label. 
       We collected 5 responses per task. The data from all responses is available below. You may expand to view individual responses, sort tasks by responses per components, or highlight different levels of task delegability.</p>
 
       <!-- choose dataset -->
       <div id="menu">
-        <h4>Table Display Options</h4>
+        <h4 id="table-title">Loading data...</h4>
+        <!-- <h4>Table Display Options</h4> -->
         <div class="dropdown" style="float:left;">
           <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Choose dataset

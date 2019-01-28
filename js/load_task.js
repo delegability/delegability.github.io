@@ -106,3 +106,15 @@ function get_random_task() {
   return ai_query_tasks[i];
 }
 
+function save_task_selection(task) {
+  sessionStorage.setItem('task', task);
+}
+
+function load_task_selection() {
+  var task = sessionStorage.getItem('task');
+  if(task === "") {
+    task = get_random_task();
+  }
+  return task;
+}
+
