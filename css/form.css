@@ -1,3 +1,7 @@
+.col-12 {
+  padding-left:1px;
+  padding-right:1px;
+}
 .card {
   margin-top:3px;
 }
@@ -10,7 +14,7 @@
   margin:1em;
 }
 
-.collapse{
+.collapse-block{
   display: block;
   text-decoration: none;
 }
