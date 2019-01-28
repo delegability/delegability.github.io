@@ -13,7 +13,6 @@
 .qinside{
   margin:1em;
 }
-
 .collapse-block{
   display: block;
   text-decoration: none;
@@ -27,7 +26,7 @@ h1.likert-header {
 }
 .statement {
   display:block;
-  font-size: 14px;
+  font-size: 1em;
   font-weight: bold;
   padding: 0.5em 0 0 0;
 }
@@ -87,7 +86,25 @@ h1.likert-header {
   font-weight:200;
   text-decoration:underline;
 }
-
 .question_body {
   padding-left:10px;
 }
+@media (max-width:576px) {
+  .question_body {
+    padding-left:5px;
+  }
+  .likert li label {
+    font-size: 0.8em;
+  }
+  .qinside{
+    margin:0.5em;
+  }
+  .card-body{
+    padding-left:0.5em;
+    padding-right:0.5em;
+  }
+  .statement{
+    font-size:0.9em;
+  }
+}
+
