@@ -39,7 +39,7 @@ var plotview = {
     {key:'t_machine_ability', name:'Machine Ability', display:true, factor:1},
     {key:'t_process', name:'Process', display:true, factor:1},
     {key:'t_values', name:'Value Alignment', display:true, factor:1},
-    {key:'d_abilities', name:'Human Abilities', display:true, factor:2},
+    {key:'d_abilities', name:'Human Ability', display:true, factor:2},
     {key:'d_effort', name:'Effort Required', display:true, factor:2},
     {key:'d_expertise', name:'Expertise Required', display:true, factor:2},
     {key:'s_creativity', name:'Creative Skills Req', display:true, factor:2},
@@ -116,6 +116,13 @@ function loadDataCallback(error, rawdata, dataset) {
     dataset.data = rawdata;
   }
 
+  var factor1 = plotGrid.rows[0].factor;
+  var factor2 = plotGrid.rows[1].factor;
+  var button1 = $("#axisButton1");
+  var button2 = $("#axisButton2");
+  button1.text(factor1.name);
+  button2.text(factor2.name);
+
   // create the plots!
   datasets.active = dataset;
   processData(rawdata, plotview.flatten);
@@ -151,6 +158,7 @@ function processData(data, flatten) {
 
 function drawAllPlots(redraw, syncSelection) {
   var data = plotview.data;
+  var svg = null;
   // lay out grid. figure out how many valid plots we have
   var numRows = 0;
   for(var i = 0; i < plotGrid.rows.length; i++) {
@@ -161,9 +169,8 @@ function drawAllPlots(redraw, syncSelection) {
 
   if(redraw) {
     // create svg, used for all plots
-    var svg = d3.select('#plotContainer svg')
-        .remove()
-    var svg = d3.select('#plotContainer')
+    d3.select('#plotContainer svg').remove()
+    svg = d3.select('#plotContainer')
         .append("svg")
         .attr("width", plotview.outerWidth)
         .attr("height", plotview.outerHeight);
@@ -205,6 +212,13 @@ function drawAllPlots(redraw, syncSelection) {
         updatePlot(data, row, rowi, col, coli, syncSelection);
       }
     }
+  }
+
+  if(redraw) {
+    var y = plotGrid.rows[1].topPos + (plotGrid.rows[1].height / 2.5);
+    var x = plotGrid.cols[2].leftPos + (plotGrid.cols[2].width / 5);
+    console.log(plotGrid.cols);
+    draw_legend(svg, x, y);
   }
 }
 
@@ -340,7 +354,8 @@ function drawPlot(data, row, row_i, col, col_i) {
       //var xAxis = d3.svg.axis()
       //    .scale(col.xScale)
       //    .orient("bottom");
-      var xAxis = d3.axisBottom(col.xScale);
+      var xAxis = d3.axisBottom(col.xScale)
+          .ticks(6);
       svg.append("g")
           //.attr("transform", "translate(0," + plotview.height + ")")
           .attr("class", "axis")
@@ -358,15 +373,12 @@ function drawPlot(data, row, row_i, col, col_i) {
   }
   // add Y-axis on left
   if(col.hasAxisLeft) {
-      var yAxis = d3.axisLeft(row.yScale);
-          //.scale(row.yScale)
-          //.orient("left");
-          //.tickSize(-plotview.width);
+      var yAxis = d3.axisLeft(row.yScale)
+          .ticks(6);
       svg.append("g")
           .attr("class", "axis")
           .attr("transform", "translate(" + plotShiftRight + "," + plotShiftBottom + ")")
           .call(yAxis)
-
       svg.append("g")
           .attr("class", "axis")
           .attr("transform", "translate(" + plotShiftRight + "," + plotShiftBottom + ")")
@@ -420,17 +432,39 @@ function drawPlot(data, row, row_i, col, col_i) {
       .classed("selectedCircle", true);
 }
 
+function draw_legend(svg, x, y) {
+  var scale = d3.scaleLinear()
+    .domain([1, 2, 3, 4])
+    .range(d3.range(1,5).map(getLabelColor));
+  svg.append("g")
+    .attr("class", "legend")
+    .attr("transform", "translate("+String(x)+","+String(y)+")");
+  var legend = d3.legendColor()
+    .labelFormat(d3.format(".2f"))
+    .title("Delegability legend")
+    .cells(4)
+    .scale(scale)
+    .labels(["1: Human Only", "2: Machine-in-the-loop", "3: Human-in-the-loop", "4: Machine Only"]);
+  svg.select(".legend").call(legend);
+}
+
 /* Entry Point: Run everything! */
 function main() {
   plotview.width = (plotview.outerWidth - plotview.margin.left - plotview.margin.right);
   plotview.height = (plotview.outerHeight - plotview.margin.top - plotview.margin.bottom);
-  plotGrid.rows[0].component = plotview.components[1];
-  plotGrid.rows[1].component = plotview.components[2];
-  plotGrid.cols[1].component = plotGrid.rows[1].component;
-  plotGrid.cols[2].component = plotGrid.rows[0].component;
+  //plotGrid.rows[0].component = plotview.components[1];
+  //plotGrid.rows[1].component = plotview.components[2];
+  //plotGrid.cols[1].component = plotGrid.rows[1].component;
+  //plotGrid.cols[2].component = plotGrid.rows[0].component;
+  var factor1 = plotview.factors[0];
+  var factor2 = plotview.factors[1];
+  plotGrid.rows[0].factor = factor1;
+  plotGrid.rows[1].factor = factor2;
+  plotGrid.cols[1].factor = plotGrid.rows[1].factor;
+  plotGrid.cols[2].factor = plotGrid.rows[0].factor;
 
-  d3.csv(datasets.expert.path, function(e, d) {
-      loadDataCallback(e, d, datasets.expert) } );
+  d3.csv(datasets.personal.path, function(e, d) {
+      loadDataCallback(e, d, datasets.personal) } );
 
   /* when everything loaded, hook up event handlers */
   $(document).ready(function() {

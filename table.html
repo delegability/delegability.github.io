@@ -21,7 +21,6 @@
     <script src="js/jetpack.js"></script>
     <script src="js/dataview.js"></script>
     <script src="js/table.js"></script>
-    <script src="js/search.js"></script>
   </head>
   <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -31,30 +30,26 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarToggler">
         <div class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <a class="nav-item nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
-          <a class="nav-item nav-link active" href="#">Data</a>
+          <a class="nav-item nav-link" href="index.html">Home</a>
+          <a class="nav-item nav-link" href="about.html">About</a>
+          <a class="nav-item nav-link active" href="#">Data<span class="sr-only">(current)</span></a>
           <a class="nav-item nav-link" href="plots.html">Visualization</a>
           <a class="nav-item nav-link" href="survey.html">Contribute</a>
         </div>
-        <form class="form-inline my-2 my-lg-0">
-          <input id="searchInput" class="form-control mr-sm-2" type="search" placeholder="Search">
-          <button class="btn btn-outline-light my-2 my-sm-0">Search</button>
-        </form>
       </div>
     </nav>
 
     <div class="container-fluid">
-      <!-- dropdown anchor -->
-      <div class="dropdown d-none" id="dropdownContainer" style="position:relative;top:0px;left:20;">
-        <span class="caret dropdown-toggle" data-toggle="dropdown" data-offset="-1000" ></span>
-        <ul class="dropdown-menu dropdown-menu-right" id="dropdownSearchList" >
-        </ul>
-      </div>
 
       <h2>Task Delegability Survey Results</h2>
+
       <p>Here you can explore the raw data we collected from our surveys on the delegability of different tasks to AI. </p>
-      <p>Each participant was presented with one of 100 tasks, and evaluated the task under components of our framework. Finally, they selected their preferred level of machine assistance for the task: the delegability label. 
-      We collected 5 responses per task. The data from all responses is available below. You may expand to view individual responses, sort tasks by responses per components, or highlight different levels of task delegability.</p>
+
+      <p> Each participant was presented with one of 100 tasks, and evaluated the task under components of our framework. Finally, they selected their preferred level of machine assistance for the task: the delegability label. Amazon Mechanical Turk was used to collect the survey responses.</p>
+
+      <p>We collected 5 responses per task. The data from all responses is available below. You may expand to view individual responses, sort tasks by responses per components, or highlight different levels of task delegability. </p>
+
+      <p><b>Note:</b> Click on a table heading to sort by that component; click again to reverse sort.</p>
 
       <!-- choose dataset -->
       <div id="menu">
@@ -70,30 +65,17 @@
           </div>
         </div>
 
-        <!-- highlight/filter delegability -->
-        <div class="dropdown" style="float:left; padding:0em 5px;">
-          <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Highlight Delegability Label
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" id="hiDel1" href="#">Human Only (1)</a>
-            <a class="dropdown-item" id="hiDel2" href="#">Machine-in-loop (2)</a>
-            <a class="dropdown-item" id="hiDel3" href="#">Human-in-loop (3)</a>
-            <a class="dropdown-item" id="hiDel4" href="#">AI only (4)</a>
-          </div>
-        </div>
-
         <form style="float:left;padding-left:1em;">
           <div class="btn-group-toggle" data-toggle="buttons">
             <label class="btn btn-secondary active" id="flattenCheckBtn">
               <input type="checkbox" id="flattenCheck" autocomplete="off" checked>Average Responses per Task
             </label>
             <label class="btn btn-secondary" id="factorGroupCheckBtn">
-              <input type="checkbox" id="factorGroupCheck" autocomplete="off" checked>Average Components by Factor
+              <input type="checkbox" id="factorGroupCheck" autocomplete="off">Average Components by Factor
             </label>
 
-            <label class="btn btn-secondary" id="colorCheckBtn">
-              <input type="checkbox" id="colorCheck" autocomplete="off">Color Cells by Value
+            <label class="btn btn-secondary active" id="colorCheckBtn">
+              <input type="checkbox" id="colorCheck" autocomplete="off" checked>Color Cells by Value
             </label>
           </div>
         </form>
@@ -109,6 +91,7 @@
           </form>
           <div class="clearfix"></div>
         </div>
+
 
       </div> <!-- end menu -->
 

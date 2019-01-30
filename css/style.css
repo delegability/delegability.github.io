@@ -20,6 +20,10 @@ table {
 th {
   text-align: left;
 }
+th a {
+  text-align: left;
+  cursor:pointer;
+}
 th, td {
   padding: 0 1em 0.5ex 0;
 }

@@ -1,17 +1,17 @@
 var tableview = {
   components: [
-    {key:'label', name:'Delegability', display:true, factor:0},
+    {key:'label', name:'Delegability', display:true, factor:0, tooltip:"1 (human only) to 4 (AI only)"},
     {key:'t_machine_ability', name:'Machine Ability', display:true, factor:1},
     {key:'t_process', name:'Process', display:true, factor:1},
     {key:'t_values', name:'Value Alignment', display:true, factor:1},
-    {key:'d_abilities', name:'Human Abilities', display:true, factor:2},
-    {key:'d_effort', name:'Effort Required', display:true, factor:2},
+    {key:'d_abilities', name:'Human Ability', display:false, factor:2},
+    {key:'d_effort', name:'Effort Required', display:false, factor:2},
     {key:'d_expertise', name:'Expertise Required', display:true, factor:2},
     {key:'s_creativity', name:'Creative Skills Req', display:true, factor:2},
     {key:'s_social_skills', name:'Social Skills Req', display:true, factor:2},
-    {key:'r_accountable', name:'Accountability', display:true, factor:3},
-    {key:'r_impact', name:'Impact', display:true, factor:3},
-    {key:'r_uncertainty', name:'Uncertainty', display:true, factor:3},
+    {key:'r_accountable', name:'Accountability', display:false, factor:3},
+    {key:'r_impact', name:'Impact', display:false, factor:3},
+    {key:'r_uncertainty', name:'Uncertainty', display:false, factor:3},
     {key:'m_important', name:'Utility', display:false, factor:4},
     {key:'m_intrinsic', name:'Intrinsic', display:false, factor:4},
     {key:'m_learning', name:'Learning Goal', display:false, factor:4} ],
@@ -23,9 +23,9 @@ var tableview = {
     {name:"Motivation",   c:'#F5B7B1', components: [12, 13, 14]} ],
   data: null,
   flatten: true,
-  color: false,
+  color: true,
   factorGroup: false,
-  sortBy: { col: null, ascending: false }
+  sortBy: { col: 0, ascending: false }
 }
 
 /*****************************************************************/
@@ -33,14 +33,21 @@ var tableview = {
 /*****************************************************************/
 /* Entry Point: Run everything! */
 function main() {
-    /* need to load both JSON and CSV before we can go. */
-    /* Populate filterMenu with check boxes */
+    // adjust defaults based on viewport size.
+    var viewportWidth = $(window).width();
+    if(viewportWidth <= 576) {
+      for(var i = 2; i < tableview.components.length; i++) {
+        tableview.components[i].display = false;
+      }
+    }
 
-    d3.csv(datasets.expert.path, function(e, d) {
-        loadDataCallback(e, d, datasets.expert) } );
+    /* need to load both JSON and CSV before we can go. */
+    d3.csv(datasets.personal.path, function(e, d) {
+        loadDataCallback(e, d, datasets.personal) } );
 
     /* when everything loaded, hook up event handlers */
     $(document).ready(function() {
+
         $('#loadDataExpert').on('click', function(e) {
             loadData(datasets.expert); } );
         $('#loadDataPerson').on('click', function(e) { 
@@ -293,7 +300,8 @@ function drawComponentTable(data) {
         .map(function(d,i) { 
             return {
                 name:d.name, disp:d.display, i:i,
-                color:tableview.factors[d.factor].c }; })
+                color:tableview.factors[d.factor].c,
+                tooltip:d.tooltip}; })
         .filter(function(d,i) { return d.disp; }) );
     table.append('thead').attr("class", "thead-dark")
         .append('tr')
@@ -302,6 +310,7 @@ function drawComponentTable(data) {
         .append('th')
         .attr('scope', "col")
         .append('a')
+        .attr('title', function(d) { return d.tooltip; })
         .on('click', function(d) { toggleSort(d.i); })
         .text(function(d) { return d.name; });
     // create table body
