@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>AI Task Delegability - About</title>
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- jquery & popper for bootstrap, may remove if not needed -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- d3 -->
+    <script src="https://d3js.org/d3.v4.js"></script>
+
+    <script src="js/search.js"></script>
+    <script src="js/load_task.js"></script>
+    <script src="js/survey.js"></script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">AI Task Delegability</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarToggler">
+        <div class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <a class="nav-item nav-link" href="index.html">Home</a>
+          <a class="nav-item nav-link active" href="#">About<span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link" href="table.html">Data</a>
+          <a class="nav-item nav-link" href="plots.html">Visualization</a>
+          <a class="nav-item nav-link" href="survey.html">Contribute</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container fixed">
+      <h1>About</h1>
+
+      <h3>Abstract</h3>
+      <p>Although artificial intelligence holds promise for addressing societal challenges, issues of exactly which tasks to automate and the extent to do so remain understudied. We approach the problem of task delegability from a human-centered perspective by developing a framework on human perception of task delegation to artificial intelligence.
+We consider four high-level factors that can contribute to a delegation decision: motivation, difficulty, risk, and trust.
+To obtain an empirical understanding of human preferences in different tasks, we build a dataset of 100 tasks from academic papers, popular media portrayal of AI, and everyday life. For each task, we administer a survey to collect judgments of each factor and ask subjects to pick the extent to which they prefer AI involvement. 
+We find little preference for full AI control and a strong preference for machine-in-the-loop designs, in which humans play the leading role. 
+Our framework can effectively predict human preferences in the degree of AI assistance.
+Among the four factors, trust is the most predictive of human preferences of optimal human-machine delegation.
+In all, this work is a first step towards quantifying the delegability of traditionally-human tasks to AI. We hope to highlight this as an important research area for human-centered computing.
+
+      <h3>Limitations</h3>
+
+      <p>We stress that this research is a first attempt at quantifying the delegability of different tasks. The four-factor framework we present here -- Trust, Difficulty, Ability, Motivation -- is by no means comprehensive or necessarily the correct approach. We also acknowledge limitations in the administration of our survey on Mechanical Turk as a data collection method, and of the implicit impact of our survey wording and choice of tasks on the results. Finally, we limited the survey respondants to United States residents; we expect a dependence on cultural customs and norms.</p>
+
+      <p>Nevertheless, we suggest that the direction is a valuable one. Quantification of which tasks people actually <i>want</i> delegated and why, alongside the amount and type of machine assistance for each task, would go a long way towards more efficient and responsible allocation of industry and academic research resources. Further, a better understanding of the factors behind what makes one task more delegable to AI than another would improve our ability to address AI shortcomings, improve usability, and generalize task-specific ML, HCI, or HRI results to other tasks in the task space.</p>
+
+      <p>Our hope is that this preliminary work can assist the community in developing more rigorous methods of supporting human-centered machine learning and automation.</p>
+
+      <h3>About Us</h3>
+      We are a group of researchers at the University of Colorado, Boulder, interested in human-centered machine learning. This research project was conducted by Professor <a href="https://www.chenhaot.com/">Chenhao Tan</a> and M.S. student <a href="https://blubars.github.io/">Brian Lubars</a>.
+
+    </div> <!-- div container -->
+  </body>
+
+</html>
