@@ -45,7 +45,7 @@ td.title {
 #menu button, #menu form {
   margin-bottom:0.5em;
 }
-#filter-menu {
+.table-display-options {
   margin-left:1em;
   margin-bottom:1em;
   padding-left:0em;

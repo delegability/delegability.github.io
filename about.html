@@ -50,6 +50,101 @@ Our framework can effectively predict human preferences in the degree of AI assi
 Among the four factors, trust is the most predictive of human preferences of optimal human-machine delegation.
 In all, this work is a first step towards quantifying the delegability of traditionally-human tasks to AI. We hope to highlight this as an important research area for human-centered computing.
 
+      <h3>A Framework for Task Delegability</h3>
+
+      <table class="table table-hover table-sm" style="border:none">
+        <caption>An overview of the four factors in our AI task delegability framework.</caption>
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Factors</th>
+            <th scope="col">Components</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Motivation</th>
+            <td>Intrinsic motivation, goals, utility</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Difficulty</th>
+            <td>Social skills, creativity, effort required, expertise required, human ability</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Risk</td>
+            <td>Accountability, uncertainty, impact</td>
+          </tr>
+          <tr>
+            <th scope="row">4</th>
+            <td>Trust</td>
+            <td>Machine ability, interpretability, value alignment</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+      To explain human preferences of task delegation to AI, we
+      develop a framework with four factors: a person’s <b>motivation</b> in undertaking the task, their perception of the task’s
+      <b>difficulty</b>, their perception of the <b>risk</b> associated with accomplishing the task, and finally their <b>trust</b> in the AI agent.
+      </p>
+      <p>
+      We choose these factors because motivation, difficulty, and
+      risk respectively cover why a person chooses to perform a
+      task, the process of performing a task, and the outcome,
+      while trust captures the interaction between the person and
+      the AI. 
+      </p>
+
+      <div style="margin:auto">
+      <figure class="figure" style="margin:auto;text-align:center;display:block;">
+        <img src="images/model.png" class="figure-img img-fluid" alt="The four-factor representation of our framework on task delegation decisions.">
+        <figcaption class="figure-caption">The four factors behind task delegability to automation, under our framework.<figcaption>
+      </figure>
+      </div>
+
+      <h5>Motivation</h5>
+      <p>
+      Motivation is an energizing factor that helps initiate, sustain, and regulate task-related actions by directing our attention towards goals or values. 
+      Affective (emotional) and cognitive processes are thought to be collectively responsible for driving action, so we consider <b>intrinsic motivation</b> and <b>goals</b> as two components in motivation.
+      Specifically we distinguish between learning goals and performance goals, as indicated by Goal Setting Theory.
+      Finally, the expected <b>utility</b> of a task captures its value from a rational cost-benefit analysis perspective. 
+      Note that a task may be of high intrinsic motivation yet low utility, e.g., reading a novel.
+      </p>
+
+      <h5>Difficulty</h5>
+
+      <p>
+      Difficulty is a subjective measure reflecting the of performing a task. 
+      For delegation, we frame difficulty the interplay between task requirements and the ability of a person to meet those requirements. 
+      Some tasks are difficult because they are time-consuming or laborious; others, because of the required training or expertise. 
+      To differentiate the two, we include <b>effort required</b> and <b>expertise required</b> as components in difficulty. The third component, <b>belief about abilities possessed</b>, can also be thought of as task-specific self-confidence (also called self-efficacy) and has been empirically shown to predict allocation strategies between people and automation.
+      </p>
+
+      <p>Additionally, we contextualize our difficulty measures with two specific skill requirements: the amount of <b>creativity</b> and <b>social skills</b> required. We choose these because they are considered more difficult for machines than for humans.
+      </p>
+
+      <h5>Risk</h5>
+      <p>
+Real-world tasks involve uncertainty and risk in accomplishing the task, so a rational decision on delegation involves more than just cost and benefit. 
+Delegation amounts to a bet: a choice considering the probabilities of accomplishing the goal against the risks and costs of each agent.
+Perkins et al. define risk practically as a “probability of harm or loss,” finding that people rely on automation less as the probability of mortality increases. 
+Responsibility or accountability may play a role if delegation is seen as a way to share blame. 
+We thus decompose risk into the three components of personal <b>accountability</b> for the task outcome; the <b>uncertainty</b>, or the probability of errors; and the scope of <b>impact</b>, or cost or magnitude of those errors.
+      </p>
+
+      <h5>Trust</h5>
+      <p>
+      Trust captures how people deal with risk or uncertainty. 
+      We use Lee and See’s definition of trust as “the attitude that an agent will help achieve an individual’s goals in a situation characterized by uncertainty and vulnerability."
+Trust is generally regarded as the most salient factor in reliance on automation.
+Here, we consider trust as a combination of perceived <b>ability</b> of the AI agent, agent <b>interpretability</b> (ability to explain itself), and perceived <b>value alignment</b>. 
+Each of these corresponds to a component of trust in automation in Lee and See: performance, process, and purpose.
+      </p>
+
+
       <h3>Limitations</h3>
 
       <p>We stress that this research is a first attempt at quantifying the delegability of different tasks. The four-factor framework we present here -- Trust, Difficulty, Ability, Motivation -- is by no means comprehensive or necessarily the correct approach. We also acknowledge limitations in the administration of our survey on Mechanical Turk as a data collection method, and of the implicit impact of our survey wording and choice of tasks on the results. Finally, we limited the survey respondants to United States residents; we expect a dependence on cultural customs and norms.</p>
@@ -59,7 +154,7 @@ In all, this work is a first step towards quantifying the delegability of tradit
       <p>Our hope is that this preliminary work can assist the community in developing more rigorous methods of supporting human-centered machine learning and automation.</p>
 
       <h3>About Us</h3>
-      We are a group of researchers at the University of Colorado, Boulder, interested in human-centered machine learning. This research project was conducted by Professor <a href="https://www.chenhaot.com/">Chenhao Tan</a> and M.S. student <a href="https://blubars.github.io/">Brian Lubars</a>.
+      <p>We are a group of researchers at the University of Colorado, Boulder, interested in human-centered machine learning. This research project was conducted by Professor <a href="https://www.chenhaot.com/">Chenhao Tan</a> and M.S. student <a href="https://blubars.github.io/">Brian Lubars</a>.</p>
 
     </div> <!-- div container -->
   </body>

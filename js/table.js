@@ -1,30 +1,30 @@
 var tableview = {
   components: [
-    {key:'label', name:'Delegability', display:true, factor:0, tooltip:"1 (human only) to 4 (AI only)"},
-    {key:'t_machine_ability', name:'Machine Ability', display:true, factor:1},
-    {key:'t_process', name:'Process', display:true, factor:1},
-    {key:'t_values', name:'Value Alignment', display:true, factor:1},
-    {key:'d_abilities', name:'Human Ability', display:false, factor:2},
-    {key:'d_effort', name:'Effort Required', display:false, factor:2},
-    {key:'d_expertise', name:'Expertise Required', display:true, factor:2},
-    {key:'s_creativity', name:'Creative Skills Req', display:true, factor:2},
-    {key:'s_social_skills', name:'Social Skills Req', display:true, factor:2},
-    {key:'r_accountable', name:'Accountability', display:false, factor:3},
-    {key:'r_impact', name:'Impact', display:false, factor:3},
-    {key:'r_uncertainty', name:'Uncertainty', display:false, factor:3},
-    {key:'m_important', name:'Utility', display:false, factor:4},
-    {key:'m_intrinsic', name:'Intrinsic', display:false, factor:4},
-    {key:'m_learning', name:'Learning Goal', display:false, factor:4} ],
+    {key:'label', name:'Delegability', display:true, factor:0, tooltip:"1 (human only) to 4 (AI only)", max:4},
+    {key:'t_machine_ability', name:'Machine Ability', display:true, factor:1, max:5},
+    {key:'t_process', name:'Process', display:true, factor:1, max:5},
+    {key:'t_values', name:'Value Alignment', display:true, factor:1, max:5},
+    {key:'d_abilities', name:'Human Ability', display:false, factor:2, max:5},
+    {key:'d_effort', name:'Effort Required', display:false, factor:2, max:5},
+    {key:'d_expertise', name:'Expertise Required', display:true, factor:2, max:5},
+    {key:'s_creativity', name:'Creative Skills Req', display:true, factor:2, max:5},
+    {key:'s_social_skills', name:'Social Skills Req', display:true, factor:2, max:5},
+    {key:'r_accountable', name:'Accountability', display:false, factor:3, max:5},
+    {key:'r_impact', name:'Impact', display:false, factor:3, max:5},
+    {key:'r_uncertainty', name:'Uncertainty', display:false, factor:3, max:5},
+    {key:'m_important', name:'Utility', display:false, factor:4, max:5},
+    {key:'m_intrinsic', name:'Intrinsic', display:false, factor:4, max:5},
+    {key:'m_learning', name:'Learning Goal', display:false, factor:4, max:5} ],
   factors: [
-    {name:"Delegability", c:'#AED6F1', components: [0]},
-    {name:"Trust",        c:'#ABEBC6', components: [1, 2, 3]},
-    {name:"Difficulty",   c:'#FAD7A0', components: [4, 5, 6, 7, 8]},
-    {name:"Risk",         c:'#F9E79F', components: [9, 10, 11]},
-    {name:"Motivation",   c:'#F5B7B1', components: [12, 13, 14]} ],
+    {name:"Delegability", c:'#AED6F1', components: [0], max:4},
+    {name:"Trust",        c:'#ABEBC6', components: [1, 2, 3], max:5},
+    {name:"Difficulty",   c:'#FAD7A0', components: [4, 5, 6, 7, 8], max:5},
+    {name:"Risk",         c:'#F9E79F', components: [9, 10, 11], max:5},
+    {name:"Motivation",   c:'#F5B7B1', components: [12, 13, 14], max:5} ],
   data: null,
   flatten: true,
   color: true,
-  factorGroup: false,
+  factorGroup: true,
   sortBy: { col: 0, ascending: false }
 }
 
@@ -65,7 +65,6 @@ function main() {
         $('#colorCheckBtn').on('click', handleColorCheckbox);
 
         var menu = $("#filter-menu form div");
-
         for(var fi = 0; fi < tableview.factors.length; fi++) {
             var factorNameSpan = $(document.createElement('span'))
                 .attr({class: 'factorFilterCheckText'});
@@ -100,6 +99,7 @@ function main() {
             }
             menu.append(factorSpan);
         }
+        $("#filter-menu").addClass("d-none");
     });
 }
 
@@ -195,6 +195,18 @@ function avgFactorValues(d, factor) {
     return avg;
 }
 
+function getTableCellStyle(val, maxVal) {
+  var style = "";
+  if(tableview.color) {
+    style = "background-color:" + getColor(val, maxVal);
+    if(val > (maxVal - 1) || val < 2) {
+      style += ";color:#fff;";
+    }
+  }
+
+  return style;
+}
+
 function dataToFactorColumn(row, i) {
     var task = (row.key) ? row.key : row.task;
     var table_row = [
@@ -204,12 +216,13 @@ function dataToFactorColumn(row, i) {
           var cell = {}
           var avg_val = avgFactorValues(row, f);
           cell['html'] = avg_val;
-          if(tableview.color) {
-              cell['style'] = "background-color:" + getColor(avg_val);
-              if(avg_val > 4 || avg_val < 2) {
-                  cell['style'] += ";color:#fff;";
-              }
-          }
+          cell['style'] = getTableCellStyle(avg_val, f.max);
+          //if(tableview.color) {
+          //    cell['style'] = "background-color:" + getColor(avg_val);
+          //    if(avg_val > 4 || avg_val < 2) {
+          //        cell['style'] += ";color:#fff;";
+          //    }
+          //}
           if(avg_val) return cell;
     }).filter(function(d) { return d; });
     return table_row.concat(data_cells);
@@ -226,12 +239,13 @@ function dataToColumn(row, i) {
             var value = (row.value) ? 
                 row.value[comp.key] : row[comp.key];
             cell['html'] = value;
-            if(tableview.color) {
-                cell['style'] = "background-color:" + getColor(value);
-                if(value > 4 || value < 2) {
-                    cell['style'] += ";color:#fff;";
-                }
-            }
+            cell['style'] = getTableCellStyle(value, comp.max);
+            //if(tableview.color) {
+            //    cell['style'] = "background-color:" + getColor(value, maxVal);
+            //    if(value > 4 || value < 2) {
+            //        cell['style'] += ";color:#fff;";
+            //    }
+            //}
             return cell;
         }
     }).filter(function(d) { return d; });
@@ -325,10 +339,10 @@ function drawComponentTable(data) {
         .html(d3.f('html'));
 }
 
-function getColor(val) {
+function getColor(val, maxVal) {
     var color ='#fff';
     if(+val) {
-      var num = ((+val - 1) / 4.0);
+      var num = ((+val - 1) / (maxVal-1));
       //color = d3.interpolateGreens(num);
       color = d3.interpolateRdBu(num);
     }
@@ -349,6 +363,11 @@ function handleFlattenCheckbox() {
 
 function handleFactorGroupCheckbox() {
     tableview.factorGroup = !tableview.factorGroup;
+    if(tableview.factorGroup) {
+      $("#filter-menu").addClass("d-none");
+    } else {
+      $("#filter-menu").removeClass("d-none");
+    }
     drawTable();
 }
 

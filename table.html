@@ -54,36 +54,41 @@
       <!-- choose dataset -->
       <div id="menu">
         <h4 id="table-title">Loading data...</h4>
-        <!-- <h4>Table Display Options</h4> -->
-        <div class="dropdown" style="float:left;">
-          <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Choose dataset
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" id="loadDataExpert" href="#">Expert</a>
-            <a class="dropdown-item" id="loadDataPerson" href="#">Personal</a>
+        <div class="table-display-options">
+          <div class="dropdown" style="float:left;">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Choose dataset
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" id="loadDataExpert" href="#">Expert</a>
+              <a class="dropdown-item" id="loadDataPerson" href="#">Personal</a>
+            </div>
           </div>
         </div>
 
-        <form style="float:left;padding-left:1em;">
-          <div class="btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-secondary active" id="flattenCheckBtn">
-              <input type="checkbox" id="flattenCheck" autocomplete="off" checked>Average Responses per Task
-            </label>
-            <label class="btn btn-secondary" id="factorGroupCheckBtn">
-              <input type="checkbox" id="factorGroupCheck" autocomplete="off">Average Components by Factor
-            </label>
+        <div class="clearfix"></div>
 
-            <label class="btn btn-secondary active" id="colorCheckBtn">
-              <input type="checkbox" id="colorCheck" autocomplete="off" checked>Color Cells by Value
-            </label>
-          </div>
-        </form>
+        <div class="table-display-options">
+          <p style="font-weight:700;margin:0px">Display toggles:</p>
+          <form style="float:left;padding-left:1em;">
+            <div class="btn-group-toggle" data-toggle="buttons">
+              <label class="btn btn-secondary active" id="flattenCheckBtn">
+                <input type="checkbox" id="flattenCheck" autocomplete="off" checked>Average Responses per Task
+              </label>
+              <label class="btn btn-secondary active" id="factorGroupCheckBtn">
+                <input type="checkbox" id="factorGroupCheck" autocomplete="off" checked>Average Components by Factor
+              </label>
+              <label class="btn btn-secondary active" id="colorCheckBtn">
+                <input type="checkbox" id="colorCheck" autocomplete="off" checked>Color Cells by Value
+              </label>
+            </div>
+          </form>
+        </div>
 
         <div class="clearfix"></div>
 
         <!-- turn on/off column displays -->
-        <div id="filter-menu">
+        <div id="filter-menu" class="table-display-options">
           <span style="font-weight:700;">Display columns:</span>
           <form>
             <div class="form-check">

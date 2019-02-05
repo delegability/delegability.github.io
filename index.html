@@ -33,12 +33,13 @@
 
     <div class="container fixed">
       <h1>Task Delegability</h1>
-      <h3><small class="text-muted">Deciding which tasks should be delegated to AI: A human-centered approach.</small></h3>
+      <h3><small class="text-muted">Deciding which tasks <i>should</i> be delegated to AI: A human-centered approach.</small></h3>
 
       <p>
       Recent developments in machine learning have catapulted the promise of artificial intelligence into the public consciousness and driven a resurgence in research.
-      ML, and more broadly, AI, clearly hold great promise for addressing societal ills. 
-      But while machine capabilities have reached new hights, the questions of <i>which tasks to automate</i> and the <i>extent to do so</i> have lagged behind.</p>
+      But while machine capabilities have reached new heights, the questions of <i>which tasks to automate</i> and the <i>extent to do so</i> have lagged behind.</p>
+
+      <p>We wish to explore these shortcomings.</p>
 
       <!--<p>In other words, people are pushing the boundary of <i>what AI can do</i>, but the parallel question of <i>what AI should do</i> remains understudied in artificial intelligence research.</p> -->
 
@@ -48,15 +49,18 @@
         <footer class="blockquote-footer"><cite>Andrew Ng</cite></footer>
       </blockquote>
 
-
-      <p>We wish to explore these shortcomings.</p>
+      <figure class="figure float-right" style="width:340px;" >
+        <img src="images/model.png" class="figure-img img-fluid" alt="The four-factor representation of our framework on task delegation decisions.">
+        <figcaption class="figure-caption">The four factors behind task delegability to automation, under our framework.<figcaption>
+      </figure>
 
       <p>
-      For some tasks, such as dangerous or routine work, complete automation may be the right answer. For others, we may still want AI to play an assistive role while maintaining overall human control (e.g, <a href="https://medium.com/@ChenhaoTan/human-centered-machine-learning-a-machine-in-the-loop-approach-ed024db34fe7">machine-in-the-loop designs</a>).
-      Clearly machine ability figures into this decision. But human preferences should also play a role. Even if machines are more capable, people may want to keep control over tasks for a variety of reasons: e.g., privacy, ethics, or motivation. A better understanding of the factors behind a delegation preference, and the relation of the delegability of different tasks to each-other could help researchers and industry alike.
+      For some tasks, such as dangerous or routine work, complete automation may be the right answer. For others, we may still want AI to play an assistive role while maintaining overall human control (i.e., <a href="https://medium.com/@ChenhaoTan/human-centered-machine-learning-a-machine-in-the-loop-approach-ed024db34fe7">machine-in-the-loop designs</a>).
+      Clearly machine ability figures into this decision. But <i>human preferences</i> should also play a role. Even as machines grow more capable, people may want to keep control over tasks for a variety of reasons, including privacy, ethics, or motivation. A better understanding of the factors behind a delegation preference, and the relation of the delegability of different tasks to each-other could help researchers and industry alike.
       </p>
 
-      <p>Towards this end, we take three steps.
+      <h3>Approach</h3>
+      <p>Towards this end, we take three steps.</p>
       <ol>
         <li>Develop a framework of human perception of task delegability to AI, considering four high-level factors which may contribute to a delegation decision</li>
         <li>
@@ -76,8 +80,23 @@
       four factors, trust is the most predictive of human preferences
       of optimal human-machine delegation.</p>
 
+      <div style="margin:auto;text-align:center; width:85%">
+        <figure class="figure">
+        <figure class="figure float-left" style="width:50%">
+          <img src="images/hist_cmp_label.png" class="figure-img img-fluid" alt="Distribution of individual preferences">
+          <figcaption class="figure-caption" style="text-align:center">Individual preferences</figcaption>
+        </figure>
+        <figure class="figure float-left" style="width:50%">
+          <img src="images/hist_cmp_label_flattened.png" class="figure-img img-fluid" alt="Distribution of average preferences">
+          <figcaption class="figure-caption" style="text-align:center">Averaged preferences (across the 5 individual responses) for each task.</figcaption>
+        </figure>
+        <div class="clearfix"></div>
+        <figcaption class="figure-caption" style="text-align:center">Distribution of delegability preferences from surveys. <figcaption>
+        </figure>
+      </div>
+
       <h3>Exploring the data</h3>
-      <p>The responses are available on this site in interactive forms for exploration, either as a <a href="table.html">table</a> with the raw data, or visualized as a multidimensional <a href="plots.html">plot</a>.
+      <p>The responses are available on this site in interactive forms for exploration, either as a <a href="table.html">table</a> with the raw data, or visualized as a multidimensional <a href="plots.html">plot</a>.</p>
 
       <p>We also have the <a href="survey.html">surveys</a> available. You can view the survey we administered to collect the data, or if you like, submit responses of your own!</p>
 
