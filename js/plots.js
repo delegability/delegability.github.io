@@ -51,7 +51,7 @@ var plotview = {
     {key:'m_intrinsic', name:'Intrinsic', display:false, factor:4},
     {key:'m_learning', name:'Learning Goal', display:false, factor:4} ],
   factors: [
-    //{name:"Delegability", c:'#AED6F1', components: [0]},
+    {name:"Delegability", c:'#AED6F1', components: [0]},
     {name:"Trust",        c:'#ABEBC6', components: [1, 2, 3]},
     {name:"Difficulty",   c:'#FAD7A0', components: [4, 5, 6, 7, 8]},
     {name:"Risk",         c:'#F9E79F', components: [9, 10, 11]},
@@ -115,13 +115,6 @@ function loadDataCallback(error, rawdata, dataset) {
   if (!dataset.data) {
     dataset.data = rawdata;
   }
-
-  var factor1 = plotGrid.rows[0].factor;
-  var factor2 = plotGrid.rows[1].factor;
-  var button1 = $("#axisButton1");
-  var button2 = $("#axisButton2");
-  button1.text(factor1.name);
-  button2.text(factor2.name);
 
   // create the plots!
   datasets.active = dataset;
@@ -463,11 +456,15 @@ function main() {
   plotGrid.cols[1].factor = plotGrid.rows[1].factor;
   plotGrid.cols[2].factor = plotGrid.rows[0].factor;
 
+
   d3.csv(datasets.personal.path, function(e, d) {
       loadDataCallback(e, d, datasets.personal) } );
 
   /* when everything loaded, hook up event handlers */
   $(document).ready(function() {
+    $("#axisButton1").text(factor1.name);
+    $("#axisButton2").text(factor2.name);
+
     /* attach handlers for changing dataset */
     $('#loadDataExpert').on('click', function(e) {
         loadData(datasets.expert); } );
@@ -480,6 +477,8 @@ function main() {
       var menu = $("#axisMenu" + axisNum);
       for(var fi = 0; fi < plotview.factors.length; fi++) {
         var factor = plotview.factors[fi];
+        var cis = factor.components;
+        var factorText = (cis.length > 1) ? factor.name + ': ' : factor.name;
         var factorElem = $(document.createElement('a'))
           .attr({
             class: 'dropdown-item axisMenuItemHeader',
@@ -488,20 +487,21 @@ function main() {
             onclick: 'handlePlotAxisSelect(' + axisNum + 
                   ', -1, ' + fi + ');'
           });
-        factorElem.html(factor.name + ': ');
+        factorElem.html(factorText);
         menu.append(factorElem);
-        var cis = factor.components;
-        for(ci = 0; ci < cis.length; ci++) {
-          var comp = plotview.components[cis[ci]];
-          var compElem = $(document.createElement('a')).attr({
-                class: 'dropdown-item axisMenuItem',
-                id: 'c-' + comp.name + '-' + axisNum,
-                href: '#',
-                onclick: 'handlePlotAxisSelect(' + axisNum + 
-                  ', ' + cis[ci] + ', -1);'
-          });
-          compElem.html("&nbsp;&nbsp;" + comp.name);
-          menu.append(compElem);
+        if (cis.length > 1) {
+          for(ci = 0; ci < cis.length; ci++) {
+            var comp = plotview.components[cis[ci]];
+            var compElem = $(document.createElement('a')).attr({
+                  class: 'dropdown-item axisMenuItem',
+                  id: 'c-' + comp.name + '-' + axisNum,
+                  href: '#',
+                  onclick: 'handlePlotAxisSelect(' + axisNum + 
+                    ', ' + cis[ci] + ', -1);'
+            });
+            compElem.html("&nbsp;&nbsp;" + comp.name);
+            menu.append(compElem);
+          }
         }
       }
     }
